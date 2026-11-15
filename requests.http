@@ -1,0 +1,110 @@
+@baseUrl = http://localhost:3000
+
+### Health check
+# @name health
+GET {{baseUrl}}/api/health
+
+### List all products
+# @name listProducts
+GET {{baseUrl}}/api/products
+
+### Search products by text
+# @name searchProducts
+GET {{baseUrl}}/api/products?q=wireless
+
+### Filter products by category
+# @name filterProducts
+GET {{baseUrl}}/api/products?category=Audio
+
+### Sort products by price (ascending)
+# @name sortPriceAscending
+GET {{baseUrl}}/api/products?sort=price
+
+### Sort products by price (descending)
+# @name sortPriceDescending
+GET {{baseUrl}}/api/products?sort=-price
+
+### Get a product by ID
+# @name getProduct
+GET {{baseUrl}}/api/products/550e8400-e29b-41d4-a716-446655440001
+
+### Create a product (run this before the dependent requests below)
+# @name create
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "REST Client Demo Item",
+  "sku": "TST-9001",
+  "category": "Accessories",
+  "price": 24.99,
+  "stock": 12
+}
+
+### Invalid product (422 with field errors)
+# @name invalidCreate
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "A",
+  "sku": "bad-sku",
+  "category": "Furniture",
+  "price": 0,
+  "stock": -1
+}
+
+### Duplicate the SKU created above (422)
+# @name duplicateSku
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Duplicate SKU Demo Item",
+  "sku": "{{create.response.body.data.sku}}",
+  "category": "Accessories",
+  "price": 19.99,
+  "stock": 3
+}
+
+### Get the newly created product
+# @name getCreatedProduct
+GET {{baseUrl}}/api/products/{{create.response.body.data.id}}
+
+### Replace all editable fields (PUT)
+# @name updateProduct
+PUT {{baseUrl}}/api/products/{{create.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "name": "REST Client Demo Item Updated",
+  "sku": "{{create.response.body.data.sku}}",
+  "category": "Accessories",
+  "price": 29.99,
+  "stock": 10
+}
+
+### Change only the stock (PATCH)
+# @name patchProduct
+PATCH {{baseUrl}}/api/products/{{create.response.body.data.id}}
+Content-Type: application/json
+
+{
+  "stock": 8
+}
+
+### Delete the created product (204)
+# @name deleteProduct
+DELETE {{baseUrl}}/api/products/{{create.response.body.data.id}}
+
+### Get the deleted product (404)
+# @name getDeletedProduct
+GET {{baseUrl}}/api/products/{{create.response.body.data.id}}
+
+### Request a product that does not exist (404)
+# @name missingProduct
+GET {{baseUrl}}/api/products/00000000-0000-4000-8000-000000000000
+
+### Unknown API route (404)
+# @name unknownRoute
+GET {{baseUrl}}/api/not-a-route

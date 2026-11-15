@@ -4,6 +4,10 @@ A file-backed REST API built with Node.js and Express 5. Start the development
 server with `npm run dev`; it listens on port `3000` by default, or on the port
 specified by `PORT`.
 
+Open [http://localhost:3000/](http://localhost:3000/) for the product
+management interface, including search, filters, stock controls, and product
+creation.
+
 Successful responses use `{ "data": ... }`. Errors use
 `{ "error": { "message": "..." } }`; validation errors also include
 `"fields": { "field": "reason" }`. In non-production environments, unexpected

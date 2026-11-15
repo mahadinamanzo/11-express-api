@@ -1,0 +1,74 @@
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440001",
+    "name": "Wireless Noise-Cancelling Headphones",
+    "sku": "AUD-1001",
+    "category": "Audio",
+    "price": 179.99,
+    "stock": 34,
+    "createdAt": "2025-02-14T10:30:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440002",
+    "name": "Portable Bluetooth Speaker",
+    "sku": "AUD-1002",
+    "category": "Audio",
+    "price": 89.5,
+    "stock": 58,
+    "createdAt": "2025-03-02T08:15:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440003",
+    "name": "Mechanical Keyboard",
+    "sku": "ACC-2001",
+    "category": "Accessories",
+    "price": 129,
+    "stock": 21,
+    "createdAt": "2025-01-21T14:00:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440004",
+    "name": "Ergonomic Wireless Mouse",
+    "sku": "ACC-2002",
+    "category": "Accessories",
+    "price": 54.95,
+    "stock": 46,
+    "createdAt": "2025-04-10T09:45:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440005",
+    "name": "27-inch 4K Monitor",
+    "sku": "DIS-3001",
+    "category": "Displays",
+    "price": 399.99,
+    "stock": 12,
+    "createdAt": "2024-12-05T11:20:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440006",
+    "name": "USB-C Docking Station",
+    "sku": "ACC-2003",
+    "category": "Accessories",
+    "price": 149.99,
+    "stock": 17,
+    "createdAt": "2025-05-18T16:10:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440007",
+    "name": "1080p Streaming Webcam",
+    "sku": "VID-4001",
+    "category": "Video",
+    "price": 74.99,
+    "stock": 39,
+    "createdAt": "2025-02-28T13:35:00.000Z"
+  },
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440008",
+    "name": "USB-C Fast Charger 65W",
+    "sku": "PWR-5001",
+    "category": "Power",
+    "price": 39.99,
+    "stock": 63,
+    "createdAt": "2025-06-01T07:50:00.000Z"
+  }
+]

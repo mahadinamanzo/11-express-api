@@ -1,4 +1,5 @@
 import * as productsService from "../services/products.service.js";
+import HttpError from "../errors/http-error.js";
 
 export async function getProducts(req, res, next) {
   try {
@@ -19,10 +20,67 @@ export async function getProduct(req, res, next) {
     const product = await productsService.getProductById(req.params.id);
 
     if (!product) {
-      return res.status(404).json({ error: { message: "Product not found" } });
+      throw new HttpError(404, "Product not found");
     }
 
     res.json({ data: product });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function createProduct(req, res, next) {
+  try {
+    const product = await productsService.createProduct(req.validatedProduct);
+    res
+      .status(201)
+      .location(`/api/products/${encodeURIComponent(product.id)}`)
+      .json({ data: product });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function replaceProduct(req, res, next) {
+  try {
+    const product = await productsService.replaceProduct(
+      req.params.id,
+      req.validatedProduct,
+    );
+    if (!product) {
+      throw new HttpError(404, "Product not found");
+    }
+
+    res.json({ data: product });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function patchProduct(req, res, next) {
+  try {
+    const product = await productsService.patchProduct(
+      req.params.id,
+      req.validatedProduct,
+    );
+    if (!product) {
+      throw new HttpError(404, "Product not found");
+    }
+
+    res.json({ data: product });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function deleteProduct(req, res, next) {
+  try {
+    const deleted = await productsService.deleteProduct(req.params.id);
+    if (!deleted) {
+      throw new HttpError(404, "Product not found");
+    }
+
+    res.status(204).end();
   } catch (error) {
     next(error);
   }
